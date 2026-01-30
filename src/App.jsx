@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import InvitationCard from './InvitationCard'
 import BauCuaGame from './BauCuaGame'
 
@@ -28,6 +29,7 @@ function App() {
           {/* <InvitationCard /> */}
         </div>
       )}
+      <Analytics />
     </div>
   )
 }
