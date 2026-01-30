@@ -127,46 +127,46 @@ const BauCuaGame = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8 animate-fade-in">
-          <h1 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 mb-2 animate-pulse-slow">
+        <div className="text-center mb-6 md:mb-8 animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 mb-2 animate-pulse-slow">
             🎲 BẦU CUA 🎲
           </h1>
-          <p className="text-white text-xl opacity-90">Tom Tép Casino</p>
-          <div className="mt-4 inline-block bg-gradient-to-r from-green-400 to-emerald-600 text-white px-8 py-3 rounded-full text-2xl font-bold shadow-lg transform hover:scale-105 transition-transform">
+          <p className="text-white text-sm sm:text-lg md:text-xl opacity-90">Tom Tép</p>
+          <div className="mt-3 md:mt-4 inline-block bg-gradient-to-r from-green-400 to-emerald-600 text-white px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-full text-lg sm:text-xl md:text-2xl font-bold shadow-lg transform hover:scale-105 transition-transform">
             💰 {money.toLocaleString()} xu
           </div>
         </div>
 
         {/* Bàn cược */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-6 md:mb-8">
           {symbols.map((symbol) => {
             const betAmount = bets[symbol.id] || 0;
             return (
               <div
                 key={symbol.id}
-                className={`relative bg-gradient-to-br ${symbol.color} rounded-2xl p-6 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl ${
-                  betAmount > 0 ? 'ring-4 ring-yellow-400 scale-105' : ''
+                className={`relative bg-gradient-to-br ${symbol.color} rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl ${
+                  betAmount > 0 ? 'ring-2 md:ring-4 ring-yellow-400 scale-105' : ''
                 }`}
               >
                 <div className="text-center">
-                  <div className="text-6xl mb-2 animate-bounce-slow">{symbol.emoji}</div>
-                  <h3 className="text-white font-bold text-xl mb-3">{symbol.name}</h3>
+                  <div className="text-4xl sm:text-5xl md:text-6xl mb-1 md:mb-2 animate-bounce-slow">{symbol.emoji}</div>
+                  <h3 className="text-white font-bold text-sm sm:text-base md:text-xl mb-2 md:mb-3">{symbol.name}</h3>
                   
                   {/* Hiển thị tiền cược */}
                   {betAmount > 0 && (
-                    <div className="bg-yellow-400 text-gray-900 font-bold rounded-lg px-3 py-2 mb-3 animate-slide-in">
+                    <div className="bg-yellow-400 text-gray-900 font-bold rounded-md md:rounded-lg px-2 md:px-3 py-1 md:py-2 mb-2 md:mb-3 text-xs sm:text-sm md:text-base animate-slide-in">
                       💰 {betAmount}
                     </div>
                   )}
                   
                   {/* Nút cược */}
-                  <div className="flex gap-2 justify-center">
+                  <div className="flex gap-1 sm:gap-2 justify-center">
                     {[10, 50, 100].map((amount) => (
                       <button
                         key={amount}
                         onClick={() => placeBet(symbol.id, amount)}
                         disabled={rolling || money < amount}
-                        className="bg-white/90 hover:bg-white text-gray-900 font-bold px-3 py-1 rounded-lg text-sm transform transition-all hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                        className="bg-white/90 hover:bg-white text-gray-900 font-bold px-2 sm:px-3 py-1 rounded-md md:rounded-lg text-xs sm:text-sm transform transition-all hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                       >
                         +{amount}
                       </button>
@@ -179,24 +179,24 @@ const BauCuaGame = () => {
         </div>
 
         {/* Khu vực xúc xắc */}
-        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 shadow-2xl mb-8 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl mb-6 md:mb-8 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 animate-pulse-slow"></div>
           
-          <h2 className="text-white text-2xl font-bold mb-6 text-center relative z-10">
+          <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center relative z-10">
             🎲 Kết quả 🎲
           </h2>
           
-          <div className="flex justify-center gap-6 mb-8 relative z-10">
+          <div className="flex justify-center gap-2 sm:gap-4 md:gap-6 mb-6 md:mb-8 relative z-10">
             {diceResults.map((result, index) => (
               <div
                 key={index}
                 ref={diceRefs[index]}
-                className={`w-24 h-24 md:w-32 md:h-32 bg-white rounded-2xl flex items-center justify-center shadow-2xl transform transition-all duration-500 ${
+                className={`w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 bg-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl transform transition-all duration-500 ${
                   rolling ? 'animate-spin-3d' : showResults ? 'animate-bounce-in scale-110' : ''
                 }`}
               >
                 {result && (
-                  <span className="text-6xl md:text-7xl">{result.emoji}</span>
+                  <span className="text-3xl sm:text-4xl md:text-7xl">{result.emoji}</span>
                 )}
               </div>
             ))}
@@ -207,33 +207,33 @@ const BauCuaGame = () => {
             <div className={`text-center animate-slide-up ${
               winAmount > 0 ? 'text-green-400' : winAmount < 0 ? 'text-red-400' : 'text-yellow-400'
             }`}>
-              <p className="text-3xl font-bold mb-2">
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 md:mb-2">
                 {winAmount > 0 ? '🎉 THẮNG!' : winAmount < 0 ? '😢 THUA!' : '😐 HÒA!'}
               </p>
-              <p className="text-2xl font-bold">
+              <p className="text-lg sm:text-xl md:text-2xl font-bold">
                 {winAmount > 0 ? '+' : ''}{winAmount.toLocaleString()} xu
               </p>
             </div>
           )}
 
           {/* Nút điều khiển */}
-          <div className="flex gap-4 justify-center mt-6 relative z-10">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center mt-4 md:mt-6 relative z-10">
             <button
               onClick={resetBets}
               disabled={rolling || totalBets === 0}
-              className="bg-red-500 hover:bg-red-600 text-white font-bold px-8 py-3 rounded-full transform transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+              className="bg-red-500 hover:bg-red-600 text-white font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base transform transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
             >
               🔄 Đặt lại
             </button>
             <button
               onClick={rollDice}
               disabled={rolling || totalBets === 0}
-              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold px-12 py-3 rounded-full transform transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg relative overflow-hidden"
+              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold px-8 sm:px-12 py-2 sm:py-3 rounded-full text-sm sm:text-base transform transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg relative overflow-hidden"
             >
               {rolling ? (
-                <span className="animate-pulse">⏳ Đang lắc...</span>
+                <span className="animate-pulse">⏳</span>
               ) : (
-                <span>🎲 LẮC XÚC XẮC ({totalBets} xu)</span>
+                <span>🎲 ({totalBets} xu)</span>
               )}
             </button>
           </div>
@@ -241,21 +241,21 @@ const BauCuaGame = () => {
 
         {/* Lịch sử */}
         {gameHistory.length > 0 && (
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl">
-            <h3 className="text-white text-xl font-bold mb-4">📜 Lịch sử gần đây</h3>
-            <div className="space-y-3">
+          <div className="bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl p-4 md:p-6 shadow-xl">
+            <h3 className="text-white text-base sm:text-lg md:text-xl font-bold mb-3 md:mb-4">📜 Lịch sử gần đây</h3>
+            <div className="space-y-2 md:space-y-3">
               {gameHistory.map((game, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 rounded-lg p-4 flex items-center justify-between animate-slide-in"
+                  className="bg-white/5 rounded-lg p-3 md:p-4 flex items-center justify-between animate-slide-in"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="flex gap-2">
+                  <div className="flex gap-1 sm:gap-2">
                     {game.results.map((result, i) => (
-                      <span key={i} className="text-3xl">{result.emoji}</span>
+                      <span key={i} className="text-xl sm:text-2xl md:text-3xl">{result.emoji}</span>
                     ))}
                   </div>
-                  <div className={`font-bold text-lg ${
+                  <div className={`font-bold text-sm sm:text-base md:text-lg ${
                     game.profit > 0 ? 'text-green-400' : game.profit < 0 ? 'text-red-400' : 'text-yellow-400'
                   }`}>
                     {game.profit > 0 ? '+' : ''}{game.profit.toLocaleString()} xu
