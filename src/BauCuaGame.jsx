@@ -13,7 +13,7 @@ const BauCuaGame = () => {
   ];
 
   const [bets, setBets] = useState({});
-  const [money, setMoney] = useState(1000);
+  const [money, setMoney] = useState(1000000);
   const [rolling, setRolling] = useState(false);
   const [diceResults, setDiceResults] = useState([null, null, null]);
   const [showResults, setShowResults] = useState(false);
